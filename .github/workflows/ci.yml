@@ -1,12 +1,13 @@
-name: CI Pipeline
+name: Ejecutar Script
 
 on: [push, pull_request]
 
 jobs:
-  test:
-    runs-on: Windows-latest
+  run-script:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Clonar repositorio
+      - name: Clonar el repositorio
         uses: actions/checkout@v3
 
       - name: Instalar Python
@@ -14,8 +15,5 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Instalar dependencias
-        run: pip install pytest
-
-      - name: Ejecutar pruebas
-        run: pytest array.py
+      - name: Ejecutar el script
+        run: python array.py
